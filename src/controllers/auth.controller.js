@@ -26,7 +26,7 @@ class AuthController {
 				password: BcryptService.hashPassword(req.body.password),
 			};
 			const user = await UserService.createUser(userData);
-			const token = TokenService.generateToken(user.id,);
+			const token = TokenService.generateToken(user.id,user.email);
 	
 			return successResponse(res,201, 'User created successfully', {
 				token,
@@ -57,7 +57,7 @@ class AuthController {
 				if (!isPasswordMatch) {
 					return errorResponse(res, 403, 'Your password is incorrect');
 				};
-				const token = TokenService.generateToken(user.id);
+				const token = TokenService.generateToken(user.id,user.email);
 				return successResponse(res,200, 'Logged in successfully!',  {
 					token,
 					id: user.id,
