@@ -24,13 +24,10 @@ class Todos {
 	 * @returns {object} function to display a todo
 	*/
 
-	static findTodo(todoId,userIdData) {
+	static findTodo(attribute) {
 		return Todo.findOne({
-			 where: {
-				[Op.and]: [
-			  		{ id :todoId},
-			 		{ userId :userIdData},
-				]}});
+			 where: attribute
+		});
 	}
 	/**
      * function to get all todoes
