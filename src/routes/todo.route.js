@@ -13,6 +13,9 @@ router.post(
 router.get(
 	'/todos',checkAuth,TodoController.findAllTodos
 );
+router.get(
+	'/todo/:todoId',checkAuth,TodoController.findSingleTodo
+);
 
 
 
