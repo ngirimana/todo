@@ -6,14 +6,13 @@
     "test": "NODE_ENV=test npm run migrate && NODE_ENV=test nyc --reporter=html --reporter=text mocha --require @babel/register --timeout 3000 ./tests --exit",
     "coverage": "npm run test  && nyc report --reporter=text-lcov | coveralls",
     "start": "babel-node src/index.js",
-    "dev-server": "nodemon --exec babel-node src/index.js",
+    "dev-start": "nodemon --exec babel-node src/index.js",
     "create": "npx sequelize-cli db:create",
     "drop": "npx sequelize-cli db:drop",
     "migrate": "npx sequelize-cli db:migrate && sequelize db:seed:all",
     "undo": "npx sequelize-cli db:migrate:undo",
     "undo:all": "npx sequelize-cli db:migrate:undo:all",
-    "lint": "eslint",
-    "db:seed": "npx  sequelize db:seed:all"
+    "lint": "eslint"
   },
   "license": "ISC",
   "dependencies": {
