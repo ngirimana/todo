@@ -1,11 +1,13 @@
+import Sequelize from "sequelize";
 import models from "../database/models";
 
 const { Todo} = models;
+const {Op} = Sequelize
 
 /**
  * Todo service class
 */
-class UserTodo {
+class Todos {
 	/**
     * create todo function
 	 * @param {object} todo  todo information details
@@ -21,8 +23,14 @@ class UserTodo {
 	 * @param {object} attribute
 	 * @returns {object} function to display a todo
 	*/
-	static findTodo(attribute) {
-		return Todo.findOne({ where: attribute });
+
+	static findTodo(todoId,userIdData) {
+		return Todo.findOne({
+			 where: {
+				[Op.and]: [
+			  		{ id :todoId},
+			 		{ userId :userIdData},
+				]}});
 	}
 	/**
      * function to get all todoes
@@ -30,8 +38,8 @@ class UserTodo {
 	 * @returns {object} function to display a all todoes
      */
 
-	static getAllTodoes(attribute) {
-		return Todo.findAll({ where: attribute });
+	static findAllTodos(attribute) {
+		return Todo.findAll({where:attribute});
 	}
 
 	/**
@@ -58,4 +66,4 @@ class UserTodo {
 	
 }
 
-export default UserTodo;
+export default Todos;
