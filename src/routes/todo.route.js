@@ -16,6 +16,9 @@ router.get(
 router.get(
 	'/todo/:todoId',checkAuth,TodoController.findSingleTodo
 );
+router.patch(
+	'/todo/:todoId',checkAuth,TodoController.updateTodo
+);
 
 
 

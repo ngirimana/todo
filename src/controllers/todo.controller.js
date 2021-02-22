@@ -12,7 +12,7 @@ class TodoController {
 	 * 
 	 * @param {object} req 
 	 * @param {object} res 
-	 *  @returns {object} server response
+	 *  @returns {object} data for created todo
 	 */
 
 	static async createTodo(req, res) {
@@ -36,7 +36,7 @@ class TodoController {
 	 * 
 	 * @param {object} req 
 	 * @param {object} res 
-	 *  @returns {object} server response
+	 *  @returns {object} obecjted for all user todos
 	 */
 
 	static async findAllTodos(req,res){
@@ -53,6 +53,13 @@ class TodoController {
 		}
 	}
 
+	/**
+	 * 
+	 * @param {object} req 
+	 * @param {object} res 
+	 *  @returns {object} data for retrieved todo
+	 */
+
 	static async findSingleTodo(req,res){
 		const userInfo =parseInt(TokenUtil.userIdFromToken(req.header('Authorization')),10);
 		const {todoId}=req.params;
@@ -64,6 +71,32 @@ class TodoController {
 			errorResponse(res,404,'Todo is not found');
 		}
 		catch (error) {
+			errorResponse(res,500,error);
+		}
+	}
+	/**
+	 * 
+	 * @param {object} req 
+	 * @param {object} res 
+	 *  @returns {object} data for updated todo
+	 */
+
+	static async updateTodo(req, res) {
+		const userDataId =parseInt(TokenUtil.userIdFromToken(req.header('Authorization')),10);
+		const {todoId}=req.params;
+		try {
+			const todoData = {
+				title :req.body.title,
+				description: req.body.description,
+				priority:req.body.priority,
+				
+			};
+			const todo = await TodoService.updateTodo({id:todoId,user_id:userDataId},todoData);
+			if(todo){
+				return successResponse(res,200, 'Todo updated successfully',todo );
+			}
+			errorResponse(res,401,'Forbidden');
+		} catch (error) {
 			errorResponse(res,500,error);
 		}
 	}
