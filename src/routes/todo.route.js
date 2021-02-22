@@ -10,6 +10,9 @@ const router = express.Router();
 router.post(
 	'/create-todo',checkAuth,TodoController.createTodo
 );
+router.get(
+	'/todos',checkAuth,TodoController.findAllTodos
+);
 
 
 

@@ -2,11 +2,12 @@ import {errorResponse,successResponse} from '../helpers/response';
 import TodoService from '../services/todo.service';
 import TokenUtil from '../helpers/token';
 
+
 /**
  * Auth controller Class
  */
 class TodoController {
-	
+
 	/**
 	 * 
 	 * @param {object} req 
@@ -20,13 +21,32 @@ class TodoController {
 				title :req.body.title,
 				description: req.body.description,
 				priority:req.body.priority,
-				userId
+				user_id:userId
 				
 			};
 			const todo = await TodoService.createTodo(todoData);
 			return successResponse(res,201, 'Todo created successfully',todo );
 			
 		} catch (error) {
+			errorResponse(res,500,error);
+		}
+	}
+	/**
+	 * 
+	 * @param {object} req 
+	 * @param {object} res 
+	 */
+
+	static async findAllTodos(req,res){
+		const userInfo =parseInt(TokenUtil.userIdFromToken(req.header('Authorization')),10);
+		try{
+			const allTodos= await TodoService.findAllTodos({user_id:userInfo});
+			if(allTodos){
+				return successResponse(res,200, 'Todos are retrieved successfully',allTodos );
+			}
+			errorResponse(res,404,'Todo is not found');
+		}
+		catch (error) {
 			errorResponse(res,500,error);
 		}
 	}
