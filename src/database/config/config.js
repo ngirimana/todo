@@ -14,5 +14,11 @@ export const test = {
 	dialect: 'postgres',
 	logging: false,
 };
+export const production = {
+	url: process.env.DATABASE_URL,
+	dialect: 'postgres',
+	logging: false,
+};
+
 
 
