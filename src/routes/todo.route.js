@@ -19,6 +19,9 @@ router.get(
 router.patch(
 	'/todo/:todoId',checkAuth,TodoController.updateTodo
 );
+router.delete(
+	'/todo/:todoId',checkAuth,TodoController.deleteSingleTodo
+);
 
 
 
