@@ -1,4 +1,6 @@
 # Todo
+[![Coverage Status](https://coveralls.io/repos/github/ngirimana/todo/badge.svg?branch=develop)](https://coveralls.io/github/ngirimana/todo?branch=develop)
+[![Build Status](https://travis-ci.com/ngirimana/todo.svg?branch=develop)](https://travis-ci.com/ngirimana/todo)
 Create a To-Do API. The To-Do API should allow the following operations on a todo item:
 Authenitaction(Signup and Signin) Create, Update, Read, Delete
 

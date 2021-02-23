@@ -271,7 +271,7 @@ describe('7 . DELETE  specific entry ,/api/v1/todo/todoId', () => {
 	it('should return todo is deleted successfully', async () => {
 		try {
 			const res = await chai.request(app)
-			.delete('/api/v1/todo/1')
+				.delete('/api/v1/todo/1')
 				.set('Authorization', token)
 				.set('Accept', 'application/json');
 			expect(res.body).to.be.an('object');
