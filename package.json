@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test npm run drop && NODE_ENV=test npm run create && NODE_ENV=test npm run migrate && NODE_ENV=test nyc --reporter=html --reporter=text mocha --require @babel/register --timeout 15000 ./src/tests --exit",
+    "test": "NODE_ENV=test npm run migrate && NODE_ENV=test nyc --reporter=html --reporter=text mocha --require @babel/register --timeout 15000 ./src/tests --exit",
     "coverage": "npm run test  && nyc report --reporter=text-lcov | coveralls",
     "start": "babel-node src/index.js",
     "dev-start": "nodemon --exec babel-node src/index.js",

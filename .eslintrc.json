@@ -24,5 +24,11 @@
 				"requireReturnDescription": true
 			}
 		]
-	}
+	},
+	"overrides": [
+		{
+		  "files": ["*.test.js"]
+		}
+	  ]
+
 }
