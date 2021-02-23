@@ -29,7 +29,7 @@ class TodoController {
 			return successResponse(res,201, 'Todo created successfully',todo );
 			
 		} catch (error) {
-			errorResponse(res,500,error);
+			return errorResponse(res,500,error);
 		}
 	}
 	/**
@@ -43,13 +43,13 @@ class TodoController {
 		const userInfo =parseInt(TokenUtil.userIdFromToken(req.header('Authorization')),10);
 		try{
 			const allTodos= await TodoService.findAllTodos({user_id:userInfo});
-			if(allTodos){
+			if(allTodos.length){
 				return successResponse(res,200, 'Todos are retrieved successfully',allTodos );
 			}
-			errorResponse(res,404,'Todos is not found');
+			errorResponse(res,404,'Todos are not found');
 		}
 		catch (error) {
-			errorResponse(res,500,error);
+			return errorResponse(res,500,error);
 		}
 	}
 
@@ -71,7 +71,7 @@ class TodoController {
 			errorResponse(res,404,'Todo is not found');
 		}
 		catch (error) {
-			errorResponse(res,500,error);
+			return	errorResponse(res,500,error);
 		}
 	}
 	/**
@@ -97,7 +97,7 @@ class TodoController {
 			}
 			errorResponse(res,404,'Todo is not found');
 		} catch (error) {
-			errorResponse(res,500,error);
+			return errorResponse(res,500,error);
 		}
 	}
 	/**
@@ -115,10 +115,10 @@ class TodoController {
 			if(deletedTodo){
 				return successResponse(res,200, 'Todo is deleted successfully',deletedTodo );
 			}
-			errorResponse(res,404,'Todo is not found');
+			errorResponse(res,404,'Todo is not available');
 		}
 		catch (error) {
-			errorResponse(res,500,error);
+			return errorResponse(res,500,error);
 		}
 	}
 }
