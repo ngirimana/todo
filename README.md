@@ -48,8 +48,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 - SALT_ROUNDS : for password hashing round salt
 - SECRET: secrete word use when system is generating token
-- DATABASE_URL: database connection string. example: postgresql://postgres:12345@localhost/todo
-- DATABASE_URL_TEST: database connection string. example: postgresql://postgres:12345@localhost/todo_test
+- DATABASE_URL: `database connection string. example: postgresql://postgres:12345@localhost/todo`
+- DATABASE_URL_TEST: `database connection string. example: postgresql://postgres:12345@localhost/todo_test`
 
 
 ### Running
@@ -73,8 +73,8 @@ These instructions will get you a copy of the project up and running on your loc
 - Testing Framework: [Mocha](https://mochajs.org/)
 - TDD assertion library: [Chai](https://www.chaijs.com)
 - Documentation Tools: [Swagger](https://swagger.io/tools/swagger-ui/)
-- Database : [postgresql](https://www.postgresql.org/)
-- ORM : [SQuelize](https://sequelize.org/)
+- Database : [Postgresql](https://www.postgresql.org/)
+- ORM : [Squelize](https://sequelize.org/)
 
 ### Author
 
