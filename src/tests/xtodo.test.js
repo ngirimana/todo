@@ -215,7 +215,7 @@ describe(' 5. GET todos /api/v1/todos', () => {
 		}
 	});
 });
-describe(' 6. GET  specific entry ,/api/v1/todo/todoId', () => {
+describe(' 6. GET  specific v1 ,/api/v1/todo/todoId', () => {
 	
 	it('should return todo is not found ', async () => {
 		try {
@@ -252,7 +252,7 @@ describe(' 6. GET  specific entry ,/api/v1/todo/todoId', () => {
 	});
 });
 
-describe('7 . DELETE  specific entry ,/api/v1/todo/todoId', () => {
+describe('7 . DELETE  specific v1 ,/api/v1/todo/todoId', () => {
 
 	it('should return todo is not found! ', async () => {
 		try {
