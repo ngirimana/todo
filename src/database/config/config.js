@@ -18,9 +18,12 @@ export const production = {
 	url: process.env.DATABASE_URL,
 	dialect: 'postgres',
 	logging: false,
-	"dialectOptions": {
-		"ssl": true
-	}
+	dialectOptions: {
+		ssl: {
+			require: true,
+			rejectUnauthorized: false 
+		}
+	},
 };
 
 
