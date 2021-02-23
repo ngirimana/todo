@@ -1,8 +1,12 @@
 # Todo
-[![Coverage Status](https://coveralls.io/repos/github/ngirimana/todo/badge.svg?branch=develop)](https://coveralls.io/github/ngirimana/todo?branch=develop)
-[![Build Status](https://travis-ci.com/ngirimana/todo.svg?branch=develop)](https://travis-ci.com/ngirimana/todo)
+
 Create a To-Do API. The To-Do API should allow the following operations on a todo item:
 Authenitaction(Signup and Signin) Create, Update, Read, Delete
+
+
+[![Build Status](https://travis-ci.com/ngirimana/todo.svg?branch=develop)](https://travis-ci.com/ngirimana/todo)
+[![Coverage Status](https://coveralls.io/repos/github/ngirimana/todo/badge.svg?branch=ch-sagger-documentation)](https://coveralls.io/github/ngirimana/todo?branch=ch-sagger-documentation)
+[![Maintainability](https://api.codeclimate.com/v1/badges/1f85e712cfb4bf8bc8d6/maintainability)](https://codeclimate.com/github/ngirimana/todo/maintainability)
 
 ## Getting Started
 
@@ -59,6 +63,18 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Deployment
 - [Heroku](https://todo-challenge-awosomity.herokuapp.com/)
+- [API Documentation](https://todo-challenge-awosomity.herokuapp.com/api-docs/)
+
+### Tools used
+
+- Server side Framework: [Node JS](https://nodejs.org/)/[Express](https://expressjs.com/)
+- Linting Library: [ESLint](https://eslint.org)
+- Style Guide: [Airbnb](https://github.com/airbnb/javascript) and [Prettier](https://prettier.io/)
+- Testing Framework: [Mocha](https://mochajs.org/)
+- TDD assertion library: [Chai](https://www.chaijs.com)
+- Documentation Tools: [Swagger](https://swagger.io/tools/swagger-ui/)
+- Database : [postgresql](https://www.postgresql.org/)
+- ORM : [SQuelize](https://sequelize.org/)
 
 ### Author
 

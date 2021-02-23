@@ -1,0 +1,317 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "Keep your todo in safe place.",
+      "version": "1.0",
+      "title": "Todo",
+      "termsOfService": "http://swagger.io/terms/",
+      "contact": {
+        "email": "chadrackngirimana@gmail.com"
+      }
+    },
+    "basePath": "/api/v1",
+    "schemes": ["http", "https"],
+    "paths": {
+      "/auth/signup": {
+        "post": {
+          "tags": ["Signup"],
+          "summary": "User signup API",
+          "description": "create account ",
+          "operationId": "signup",
+          "consumes": ["application/json", "application/xml"],
+          "produces": ["application/xml", "application/json"],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "User object that needed to make signup",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/signup"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "User created successfully"
+            },
+            "400": {
+              "description": "Bad request,Invalid input"
+            },
+            "409": {
+              "description": " Email already in use"
+            }
+          }
+        }
+      },
+      "/auth/signin": {
+        "post": {
+          "tags": ["Signin"],
+          "summary": "User signin API",
+          "description": "Login into account",
+          "operationId": "signin",
+          "consumes": ["application/json", "application/xml"],
+          "produces": ["application/xml", "application/json"],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "User object that needs to make login",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/signin"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Logged in successfully!"
+            },
+            "400": {
+              "description": "Bad request,Invalid input"
+            },
+            "403": {
+              "description": "Your password is incorrect"
+            },
+            "401": {
+              "description": "You are not authorized to access this resouces"
+            }
+          }
+        }
+      },
+      "/create-todo": {
+        "post": {
+          "tags": ["Create todo"],
+          "summary": "Add todo",
+          "description": "User can add todo",
+          "operationId": "create-todo",
+          "consumes": ["application/json", "application/xml"],
+          "produces": ["application/xml", "application/json"],
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "type": "string",
+              "description": "The value of user token"
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Add todo",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/todo"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Todo created successfully"
+            },
+            "400": {
+              "description": "Bad request,Invalid input"
+            },
+            "401": {
+              "description": "Unauthorized,create account first."
+            }
+          }
+        }
+      },
+  
+      "/todo/{todoId}": {
+        "patch": {
+          "tags": ["Update todo"],
+          "summary": "Update todo",
+          "description": "User can update todo",
+          "operationId": "update todo",
+          "consumes": ["application/json", "application/xml"],
+          "produces": ["application/xml", "application/json"],
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "type": "string",
+              "description": "The value of user token"
+            },
+            {
+              "name": "todoId",
+              "in": "path",
+              "required": true,
+              "type": "string"
+              
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Update todo",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/todo"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Todo updated successfullyy"
+            },
+            "400": {
+              "description": "Bad request,Invalid input"
+            },
+            "404": {
+              "description": "Todo is not found "
+            },
+            "401": {
+                "description": "Unauthorized,create account first"
+            }
+          }
+        }
+      },
+      "/todo/{todoId} ": {
+        "get": {
+          "tags": ["View specific todo"],
+          "summary": "Get specific todo",
+          "description": "Get specific todo details",
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "type": "string",
+              "description": "The value of user token"
+            },
+            {
+              "name": "todoId",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Todo is retrieved successfully"
+            },
+            "404": {
+              "description": "Todo is not found"
+            },
+            "401": {
+                "description": "Unauthorized,create account first"
+            }
+          }
+        }
+      },
+      "/todo/{todoId}  ": {
+        "delete": {
+          "tags": ["Delete specific todo"],
+          "summary": "Delete todo",
+          "description": "User can delete todo",
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "type": "string",
+              "description": "The value of user token"
+            },
+            {
+              "name": "todoId",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Todo is deleted successfully"
+            },
+            "404": {
+              "description": "Todo is not available"
+            },
+            "401": {
+              "description": "Unauthorized,create account first"
+           }
+        }
+      }
+    },
+      "/todos": {
+        "get": {
+          "tags": ["View all todos"],
+          "summary": "Return all entries in diary",
+          "description": "Display all todos details",
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "type": "string",
+              "description": "The value of user token"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Todos are retrieved successfully"
+              }
+            },
+            "404": {
+              "description": "Todos are not found"
+            },
+            "401": {
+                "description": "Unauthorized,create account first"
+            }
+          }
+        }
+      },
+    
+      
+  
+    "definitions": {
+      "signup": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "required": true
+          },
+         "email": {
+            "type": "string",
+            "required": true
+          },
+          "password": {
+            "type": "string",
+            "required": true
+          }
+        }
+      },
+      "signin": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "required": true
+          },
+          "password": {
+            "type": "string",
+            "required": true
+          }
+        }
+      },
+      "todo": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "required": true
+          },
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "priority": {
+            "type": "string",
+            "required": true
+          }
+        }
+      }
+    }
+  }
