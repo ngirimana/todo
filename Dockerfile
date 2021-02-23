@@ -1,6 +1,6 @@
 # Define the image we will use and version
 # latest just means we need the latest nodejs image available
-FROM node:14
+FROM node:15.9.0
 
 # Create an app directory to hold the application code
 WORKDIR /user/src/
