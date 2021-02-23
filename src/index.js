@@ -17,7 +17,7 @@ app.use("/api/v1/",todoRoute);
 app.use('/', (req, res) => {
 	res.status(200).send({
 		status: 200,
-		message: 'Welcome To Todo ',
+		message: 'Welcome To Todo',
 	});
 });
 

@@ -38,7 +38,7 @@ class AuthController {
 			});
 			
 		} catch (error) {
-			errorResponse(res,500,error);
+			return errorResponse(res,500,error);
 		}
 	}
 

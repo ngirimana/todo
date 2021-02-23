@@ -14,7 +14,7 @@ const checkUserExists=async(req, res, next)=> {
 	});
 
 	if (user) {
-		errorResponse(res,409, 'Email already in use');
+		return	errorResponse(res,409, 'Email already in use');
 	
 	}
 	next();

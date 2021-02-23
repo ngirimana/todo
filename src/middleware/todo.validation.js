@@ -7,11 +7,11 @@ import {errorResponse} from '../helpers/response';
  * @param {method} next 
  */
 
-const signUpValidation = (req, res, next) => {
+const todoValidation = (req, res, next) => {
 	const schema = {
-		name: Joi.string().regex(/^[a-zA-Z]+$/).max(100).required(),
-		email:Joi.string().email().required(),
-		password: Joi.string().regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,20}$/).required(),
+		title: Joi.string().max(100).required(),
+		description:Joi.string().required(),
+		priority: Joi.string().required(),
 	}
 
 	const result = Joi.validate(req.body, schema);
@@ -21,4 +21,4 @@ const signUpValidation = (req, res, next) => {
 	next();
 };
 
-export default signUpValidation;
+export default todoValidation;
