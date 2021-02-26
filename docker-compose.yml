@@ -1,0 +1,25 @@
+version: '3'
+services:
+  app:
+    container_name: todos
+    restart: always
+    env_file: .env
+    environment:
+      - DATABASE-URL:"${DATABASE_URL}"
+    build: .
+    ports:
+      - '3000:3000'
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    volumes:
+      - my_dbdata:/var/lib/postgresql/data
+    ports:
+      - "5000:5432"
+    environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: safari1006
+        POSTGRES_DB: todo
+volumes: 
+  my_dbdata:
+
